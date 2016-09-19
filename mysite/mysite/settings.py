@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Django settings for mysite project.
 
@@ -11,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
 # @Time    : 2016/9/19 17:24
 # @Author  : Aries
 # @Site    :
@@ -45,10 +47,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',#中文显示后台管理
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,7 +67,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #静态文件目录
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
